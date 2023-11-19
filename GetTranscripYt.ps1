@@ -4,15 +4,50 @@ Class YtTranscription{
     [object] $out
     [string] $fileName
     [string] $fileNameExtension
+    [string[]] $outputTranscription
     
     YtTranscription($ytUrl){
         $this.ytUrl = $ytUrl
         $this.fileNameExtension = "srt"
         $this._generateRawTranscription()
+        $this._sanitizeTranscription()
     }
 
-    [void] getSanitizeTranscription(){
-        Write-Host "In progress..."
+    [void] saveTranscriptionInTxtFile(){
+        $this.outputTranscription | Out-File "result.txt"
+        Write-Host "Saved in result.txt"
+    }
+
+    [void] sendTranscriptionToClipboard(){
+        $this.outputTranscription | Set-Clipboard
+        Write-Host "Copied to Clippboard"
+    }
+
+    [void] sendToClipboardWithGPTPromptBefore(){
+        [string[]] $prompt = @()
+        $prompt = Get-Content -Path ".\prompt-ChatGPT.txt"
+        #join arrays and send to clipboard
+        $prompt + $this.outputTranscription | Set-Clipboard 
+        Write-Host "ChatGPT prepared"
+    }
+
+    [void] _sanitizeTranscription(){
+        [string] $filePath = -join(".\", $this.fileName)
+        [string[]] $content = @()
+        $content = Get-Content -Path  $filePath
+
+        [string] $timePattern = "[0-9]{2}:[0-9]{2}:[0-9]{2},[0-9]{3} --> [0-9]{2}:[0-9]{2}:[0-9]{2},[0-9]{3}"
+        [string] $numberPattern = "[0-9]{1,6}" #line numbers
+        [string] $emptyPattern = "^$"
+        [string] $noiseDescriptionPattern = "^\(.*\)$" #Any char, since start "(" and end ")"
+        [string] $fullPattern = "($timePattern)|($numberPattern)|($emptyPattern)|($noiseDescriptionPattern)"
+        
+        $this.outputTranscription = foreach($line in $content){
+            $isMatch = $line -match $fullPattern
+            if($isMatch) {continue}
+            Write-Output $line
+        }
+
     }
 
     [void] _generateRawTranscription(){
@@ -76,4 +111,6 @@ Class YtTranscription{
 
 [string] $url = "https://www.youtube.com/watch?v=yiHgmNBOzkc"
 $transcript = [YtTranscription]::new($url)
-$transcript.getSanitizeTranscription()
+#$transcript.saveTranscriptionInTxtFile()
+#$transcript.sendTranscriptionToClipboard()
+$transcript.sendToClipboardWithGPTPromptBefore()
