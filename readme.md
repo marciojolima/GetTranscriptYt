@@ -27,7 +27,7 @@ This files need to be set in PATH environment:
 
 ### Installation
 
-Hold down the 'Win' key and press 'R'. Then, in the following dialog box, type `SystemPropertiesAdvanced`.
+Hold down the 'Win' key and press 'R'(`Win+R`). Then, in the following dialog box, type `SystemPropertiesAdvanced`.
 
 Add the full path of the executables to the PATH environment.
 
