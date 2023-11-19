@@ -1,26 +1,41 @@
 
-### Get the full transcript of a YouTube video and save it to a file or to clipboard.
-
-Dependences:
-
-[YT-DLP](https://github.com/yt-dlp/yt-dlp)
-
-[FFmpeg](https://ffmpeg.org/download.html)
-
+<!-- ABOUT THE PROJECT -->
 ## About The Project
 
+Get the full transcript of a YouTube video and save it to a file or to clipboard.
+
+Using the transcript as input (prompt) in ChatGPT allows for various outcomes, such as summaries, translations, and more.
+
 ### Built With
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+Dependences:
 
 * [![PShell][PShell-img]][PShell-url]
 * [![FFmpeg][FFmpeg-img]][FFmpeg-url]
-* [![YT-DLP][YT-DLP-img]][YT-DLP-url]
+* [![YTDLP][YTDLP-img]][YTDLP-url]
+
+
+<!-- GETTING STARTED -->
+## Getting Started
+
+Before running this PowerShell script, you need to install the [FFmpeg](https://ffmpeg.org/download.html) and the [YT-DLP](https://github.com/yt-dlp/yt-dlp#release-files) binaries and set up its corresponding binary in the Windows environment variables PATH.
+
+### Prerequisites
+
+This files need to be set in PATH environment:
+* [yt-dlp.exe](https://github.com/yt-dlp/yt-dlp#release-files)
+* [ffmpeg.exe](https://ffmpeg.org/download.html)
+
+### Installation
+
+Hold down the 'Win' key and press 'R'. Then, in the following dialog box, type `SystemPropertiesAdvanced`.
+
+Add the full path of the executables to the PATH environment.
 
 ### Usage
 
 ```sh
-[string] $url = "https://www.youtube.com/watch?v=<ID-VIDEO>"`
-$transcript = [YtTranscription]::new($url)"
+[string] $url = "https://www.youtube.com/watch?v=<ID-VIDEO>"
+$transcript = [YtTranscription]::new($url)
 ```
 
 Saving the transcript in a file (result.txt)
@@ -42,7 +57,9 @@ $transcript.sendToClipboardWithGPTPromptBefore()
 ```
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-
-[PShell-img]: https://img.shields.io/badge/PowerShell-4376cf?style=plastic&logo=powershell&logoColor=4376cf&labelColor=ffffff
+[PShell-img]: https://img.shields.io/badge/PowerShell-5391FE?style=plastic&logo=powershell&logoColor=5391FEf&labelColor=ffffff
 [PShell-url]: https://learn.microsoft.com/en-us/training/modules/introduction-to-powershell/
-[YT-DLP-url]: https://github.com/yt-dlp/yt-dlp
+[FFmpeg-img]: https://img.shields.io/badge/FFmpeg-007808?style=plastic&logo=ffmpeg&logoColor=007808&labelColor=ffffff
+[FFmpeg-url]: https://www.ffmpeg.org/
+[YTDLP-img]: https://img.shields.io/badge/YTDLP-ff0000?style=plastic&logo=ytdlp&logoColor=ff0000&labelColor=ffffff
+[YTDLP-url]: https://github.com/yt-dlp/yt-dlp
