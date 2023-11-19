@@ -1,0 +1,11 @@
+Rewrite this text, taken from a YouTube video transcript, adjusting the broken paragraphs problably caused by line breaks and correct spellings words errors.
+Additionally, consider the folowwing:
+
+-Above all, keep the original text, do not create a new one.
+-Do not use quotation marks (") at the start or end of paragraphs. Wrong exemplo: "The book is on table". Correct exemplo: The book is on the table.;
+-Do not number paragraphs or employing bullets;
+-Avoid changing the original language of the text, however try to keep any expressions from other languages;
+-Do not perform grammar correction;
+
+Here is the text:
+
