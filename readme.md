@@ -1,6 +1,6 @@
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+## About GetTranscriptYT
 
 Get the full transcript of a YouTube video and save it to a file or to clipboard.
 
@@ -11,7 +11,7 @@ Dependences:
 
 * [![PShell][PShell-img]][PShell-url]
 * [![FFmpeg][FFmpeg-img]][FFmpeg-url]
-* [![YT-DLP][YT-DLP-img]][YT-DLP-url]
+* [![YTDLP][YTDLP-img]][YTDLP-url]
 
 
 <!-- GETTING STARTED -->
@@ -35,7 +35,7 @@ Add the full path of the executables to the PATH environment.
 
 ```sh
 [string] $url = "https://www.youtube.com/watch?v=<ID-VIDEO>"
-$transcript = [YtTranscription]::new($url)"
+$transcript = [YtTranscription]::new($url)
 ```
 
 Saving the transcript in a file (result.txt)
@@ -57,9 +57,9 @@ $transcript.sendToClipboardWithGPTPromptBefore()
 ```
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[PShell-img]: https://img.shields.io/badge/PowerShell-#5391FE?style=plastic&logo=powershell&logoColor=#5391FEf&labelColor=ffffff
+[PShell-img]: https://img.shields.io/badge/PowerShell-5391FE?style=plastic&logo=powershell&logoColor=5391FEf&labelColor=ffffff
 [PShell-url]: https://learn.microsoft.com/en-us/training/modules/introduction-to-powershell/
 [FFmpeg-img]: https://img.shields.io/badge/FFmpeg-007808?style=plastic&logo=ffmpeg&logoColor=007808&labelColor=ffffff
 [FFmpeg-url]: https://www.ffmpeg.org/
-[YT-DLP-url]: https://img.shields.io/badge/YTDLP-ff0000?style=plastic&logo=ytdlp&logoColor=ff0000&labelColor=ffffff
-[YT-DLP-url]: https://github.com/yt-dlp/yt-dlp
+[YTDLP-img]: https://img.shields.io/badge/YTDLP-ff0000?style=plastic&logo=ytdlp&logoColor=ff0000&labelColor=ffffff
+[YTDLP-url]: https://github.com/yt-dlp/yt-dlp
