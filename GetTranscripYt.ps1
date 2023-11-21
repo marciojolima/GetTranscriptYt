@@ -68,7 +68,13 @@ Class YtTranscription{
         
         #Found
         if($matchObj.Matches.Count -gt 0){
-            $textOut -match 'ID_[a-zA-Z0-9!@#$&()\\-`.+,/\"]*_result.[a-zA-Z]{2}.'
+            [string] $pattern = 'ID_[a-zA-Z0-9_\-!@#$&.+]*_result.[a-zA-Z]{2}.'
+            try {
+                $textOut -match $pattern
+            }
+            catch{
+                Write-Host $_
+            }
             $this.fileName = $Matches[0] + $this.fileNameExtension
         } else {
             Write-Warning "It wasn't possible to retrieve the file name."
@@ -110,6 +116,7 @@ Class YtTranscription{
 }
 
 [string] $url = "https://www.youtube.com/watch?v=yiHgmNBOzkc"
+$url = "https://www.youtube.com/watch?v=dSGW-DLMnUc"
 $transcript = [YtTranscription]::new($url)
 #$transcript.saveTranscriptionInTxtFile()
 #$transcript.sendTranscriptionToClipboard()
