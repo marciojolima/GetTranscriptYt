@@ -1,4 +1,17 @@
 <#
+****** Parameters ******
+#>
+param(
+    [Parameter(Mandatory=$true)]
+    [ValidateNotNullOrEmpty()]
+    [string] $ytlink,
+    [Parameter(Mandatory=$true)]
+    [ValidateNotNullOrEmpty()]
+    [ValidateSet('gpt', 'clip', 'file')]
+    [string] $out
+)
+
+<#
 ******* Class TranscriptionSanitization *******
 #>
 
@@ -121,7 +134,7 @@ Class YtTranscription{
         $prompt = Get-Content -Path ".\prompt-ChatGPT.txt"
         #join arrays and send to clipboard
         $prompt + $this.outputTranscription.Value | Set-Clipboard 
-        Write-Host "ChatGPT prepared"
+        Write-Host "ChatGPT prompt was prepared and copied to clipboard system."
     }
 
     [void] _sanitizeTranscription(){
@@ -195,9 +208,12 @@ Class YtTranscription{
     
 }
 
-[string] $url = "https://www.youtube.com/watch?v=yiHgmNBOzkc"
-$url = "https://www.youtube.com/watch?v=dSGW-DLMnUc"
-$transcript = [YtTranscription]::new($url)
-#$transcript.saveTranscriptionInTxtFile()
-#$transcript.sendTranscriptionToClipboard()
-$transcript.sendToClipboardWithGPTPromptBefore()
+#[string] $ytlink = "https://www.youtube.com/watch?v=yiHgmNBOzkc"
+#$ytlink = "https://www.youtube.com/watch?v=dSGW-DLMnUc"
+
+$transcript = [YtTranscription]::new($ytlink)
+switch ($out) {
+    "gpt" { $transcript.sendToClipboardWithGPTPromptBefore() }
+    "clip" { $transcript.sendTranscriptionToClipboard() }
+    "file" { $transcript.saveTranscriptionInTxtFile() }
+}
