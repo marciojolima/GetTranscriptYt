@@ -48,17 +48,17 @@ The parameter -out accepts: clip (default), gpt, or file.
 
 Sending the transcription to the system clipboard (default behavior):
 ```sh
-GetTranscriptYt.ps1 -ytlink https://www.youtube.com/watch?v=7eaTT8PekE0 -out file
+GetTranscriptYt.ps1 -ytlink https://www.youtube.com/watch?v=<video-id> -out file
 ```
 
 Saving automatic transcription in the result.txt:
 ```sh
-GetTranscriptYt.ps1 -ytlink https://www.youtube.com/watch?v=7eaTT8PekE0 -out file
+GetTranscriptYt.ps1 -ytlink https://www.youtube.com/watch?v=<video-id> -out file
 ```
 
 Sending the transcription to the clipboard with prepended prompt to organize the text:
 ```sh
-GetTranscriptYt.ps1 -ytlink https://www.youtube.com/watch?v=7eaTT8PekE0 -out gpt
+GetTranscriptYt.ps1 -ytlink https://www.youtube.com/watch?v=<video-id> -out gpt
 ```
 
 <!-- MARKDOWN LINKS & IMAGES -->
