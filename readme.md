@@ -2,12 +2,11 @@
 <!-- ABOUT THE PROJECT -->
 ## About GetTranscriptYT
 
-Get the full transcript of a YouTube video and save it to a file or to clipboard.
+Get the full `AUTOMATIC` transcript of a YouTube video and save it to a file or to clipboard.
 
 Using the transcript as input (prompt) in ChatGPT allows for various outcomes, such as summaries, translations, and more.
 
 ### Built With
-Dependences:
 
 * [![PShell][PShell-img]][PShell-url]
 * [![FFmpeg][FFmpeg-img]][FFmpeg-url]
@@ -33,28 +32,35 @@ Add the full path of the executables to the PATH environment.
 
 ### Usage
 
+Open the PowerShell terminal and navigate to the directory where the GetTranscriptYt.ps1 file is located.
+
+Common usage:
 ```sh
-[string] $url = "https://www.youtube.com/watch?v=<ID-VIDEO>"
-$transcript = [YtTranscription]::new($url)
+GetTranscriptYt.ps1 -ytlink https://www.youtube.com/watch?v=7eaTT8PekE0
 ```
 
-Saving the transcript in a file (result.txt)
+`-out` options
 
+The parameter -out accepts: clip (default), gpt, or file.
+* clip: copies the transcription to the system clipboard.
+* gpt: copies the transcription to the system clipboard and prepends a prompt to paste on ChatGPT.
+* file: creates a result.txt file int the current directory with the automatic transcription
+
+Sending the transcription to the system clipboard (default behavior):
 ```sh
-$transcript.saveTranscriptionInTxtFile()
+GetTranscriptYt.ps1 -ytlink https://www.youtube.com/watch?v=7eaTT8PekE0 -out file
 ```
 
-Send to windows clipboard
-
+Saving automatic transcription in the result.txt:
 ```sh
-$transcript.sendTranscriptionToClipboard()
+GetTranscriptYt.ps1 -ytlink https://www.youtube.com/watch?v=7eaTT8PekE0 -out file
 ```
 
-Send to clipboard with prompt to chatGPT
-
+Sending the transcription to the clipboard with prepended prompt to organize the text:
 ```sh
-$transcript.sendToClipboardWithGPTPromptBefore()
+GetTranscriptYt.ps1 -ytlink https://www.youtube.com/watch?v=7eaTT8PekE0 -out gpt
 ```
+
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [PShell-img]: https://img.shields.io/badge/PowerShell-5391FE?style=plastic&logo=powershell&logoColor=5391FEf&labelColor=ffffff
