@@ -2,13 +2,13 @@
 ****** Parameters ******
 #>
 param(
-    [Parameter(Mandatory=$true)]
+    [Parameter(Mandatory=$true, HelpMessage='Enter the youtube link!')]
     [ValidateNotNullOrEmpty()]
     [string] $ytlink,
-    [Parameter(Mandatory=$true)]
+    [Parameter(HelpMessage='Enter this options: clip[default], gpt, or file')]
     [ValidateNotNullOrEmpty()]
     [ValidateSet('gpt', 'clip', 'file')]
-    [string] $out
+    [string] $out = 'clip'
 )
 
 <#
