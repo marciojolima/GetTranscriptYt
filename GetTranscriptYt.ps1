@@ -208,9 +208,6 @@ Class YtTranscription{
     
 }
 
-#[string] $ytlink = "https://www.youtube.com/watch?v=yiHgmNBOzkc"
-#$ytlink = "https://www.youtube.com/watch?v=dSGW-DLMnUc"
-
 $transcript = [YtTranscription]::new($ytlink)
 switch ($out) {
     "gpt" { $transcript.sendToClipboardWithGPTPromptBefore() }
